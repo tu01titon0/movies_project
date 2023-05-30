@@ -1,6 +1,7 @@
 const qs = require('qs')
 const baseController = require('./base.controller')
 const baseModel = require('../../src/models/base.model')
+const userModel = require('../../src/models/user.model')
 
 class RegisterController {
 
@@ -17,21 +18,15 @@ class RegisterController {
             })
             req.on('end', async () => {
                 let infoUser = qs.parse(data)
-                let{name,password,email}=infoUser
-                const sqlUser=`select * from users where userName='${name}'`
-                let uniqueName= await baseModel.querySql(sqlUser, (err, data) => {
-                    if (err) throw err
-                })
-                if(uniqueName.length===0){
-                    const sql = `CALL addUser('${name}','${password}','${email}')`
-                    await baseModel.querySql(sql, (err, data) => {
-                        if (err) throw err
-                    })
+                let {name, password, email} = infoUser
+                let uniqueName = await userModel.findUserByName(name)
+                console.log(uniqueName)
+                if (uniqueName.length === 0) {
+                    await userModel.createUser(name,email,password)
                     res.writeHead(301, {location: '/login'});
-                }else{
-                    console.log(123)
+                } else {
                     let html = await baseController.getTemplate('./src/views/signup.html')
-                    html=html.replace('id="result">',"id=\"result\">"+"UserName has been Existed!")
+                    html = html.replace('id="result">', "id=\"result\">" + "UserName has been Existed!")
                     res.writeHead(200, {'Content-type': 'text/html'});
                     res.write(html);
                 }
@@ -44,4 +39,5 @@ class RegisterController {
         }
     }
 }
+
 module.exports = new RegisterController()

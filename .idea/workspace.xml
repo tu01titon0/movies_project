@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4906bb36-97bf-4436-8b6a-33af58cbd842" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/models/user.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/base.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/base.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/register.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/register.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/base.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/base.model.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,7 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "18.15.0",
     "javascript.nodejs.core.library.typings.version": "18.15.0",
-    "last_opened_file_path": "C:/CasestudyMD3",
+    "last_opened_file_path": "C:/CodeGym/demo casestudy",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -79,6 +79,7 @@
       <workItem from="1685342106052" duration="1220000" />
       <workItem from="1685343878746" duration="590000" />
       <workItem from="1685414744838" duration="17004000" />
+      <workItem from="1685436034252" duration="794000" />
     </task>
     <servers />
   </component>
