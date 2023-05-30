@@ -6,6 +6,7 @@ const { promisify } = require('util');
 const PORT = 3333;
 let handlers = {}
 const readFileAsync = promisify(fs.readFile);
+const MovieDetails = require('./src/controllers/movies-details.controller')
 
 let mimeTypes={
     'jpg' : 'images/jpg',
@@ -46,6 +47,19 @@ handlers.notfound = async (req, res)=>{
 
 };
 
+handlers.details = async (req, res)=>{
+    try {
+        let data = await MovieDetails.getListDetails(req,res)
+        res.writeHead(200, 'Success', {'Content-type': 'text/html'});
+        res.write(data);
+        res.end();
+    } catch (err) {
+        console.log(err);
+        res.writeHead(500, 'Internal Server Error');
+        res.end();
+    }
+}
+
 handlers.home = (req, res) =>{
     if(req.method === 'GET'){
         //code in here 
@@ -54,6 +68,7 @@ handlers.home = (req, res) =>{
 
 router = {
     '/home': handlers.home,
+    '/movies-details': handlers.details,
 }
 
 server.listen(PORT, 'localhost', () => {
