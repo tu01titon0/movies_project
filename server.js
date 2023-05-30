@@ -6,6 +6,8 @@ const { promisify } = require('util');
 const PORT = 3333;
 let handlers = {}
 const readFileAsync = promisify(fs.readFile);
+const registerController=require('./src/controllers/register.controller')
+const loginController=require('./src/controllers/login.controller')
 
 let mimeTypes={
     'jpg' : 'images/jpg',
@@ -46,14 +48,19 @@ handlers.notfound = async (req, res)=>{
 
 };
 
-handlers.home = (req, res) =>{
+handlers.home = async (req, res) =>{
     if(req.method === 'GET'){
-        //code in here 
+        const data = await readFileAsync('./src/views/home.html', 'utf-8');
+        res.writeHead(200, 'Success', {'Content-type': 'text/html'});
+        res.write(data);
+        res.end();
     }
 }
 
 router = {
     '/home': handlers.home,
+    '/register':registerController.getRegisterPage,
+    '/login':loginController.getLoginPage
 }
 
 server.listen(PORT, 'localhost', () => {
