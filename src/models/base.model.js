@@ -17,4 +17,4 @@ class BaseModel {
     }
 }
 
-module.exports = BaseModel;
+module.exports = new BaseModel;

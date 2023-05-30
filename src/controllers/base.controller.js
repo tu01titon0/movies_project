@@ -11,4 +11,4 @@ class BaseController {
         })
     }
 }
-module.exports = BaseController;
+module.exports = new BaseController;
