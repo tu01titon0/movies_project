@@ -99,19 +99,20 @@
                         <h3>Sign Up</h3>
                         <form action="#" method="post">
                             <div class="input__item">
-                                <input type="text" placeholder="Email address" name="email">
+                                <input type="email" placeholder="Email address" name="email" required>
                                 <span class="icon_mail"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Your Name" name="name">
+                                <input type="text" placeholder="Your Name" name="name" required>
                                 <span class="icon_profile"></span>
                             </div>
                             <div class="input__item">
-                                <input type="text" placeholder="Password" name="password">
+                                <input type="password" placeholder="Password" name="password" required>
                                 <span class="icon_lock"></span>
                             </div>
                             <button type="submit" class="site-btn">register</button>
                         </form>
+                        <div  class="text-danger mt-2" id="result"></div>
                         <h5>Already have an account? <a href="#">Log In!</a></h5>
                     </div>
                 </div>
