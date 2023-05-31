@@ -60,7 +60,7 @@ handlers.home = async (req, res) =>{
 router = {
     '/home': handlers.home,
     '/register':registerController.getRegisterPage,
-    '/login':loginController.getLoginPage
+    '/login':loginController.getLoginPage,
 }
 
 server.listen(PORT, 'localhost', () => {

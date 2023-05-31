@@ -20,7 +20,6 @@ class RegisterController {
                 let infoUser = qs.parse(data)
                 let {name, password, email} = infoUser
                 let uniqueName = await userModel.findUserByName(name)
-                console.log(uniqueName)
                 if (uniqueName.length === 0) {
                     await userModel.createUser(name,email,password)
                     res.writeHead(301, {location: '/login'});
