@@ -6,7 +6,7 @@ const {promisify} = require("util");
 const fs = require("fs");
 const readFileAsync = promisify(fs.readFile);
 
-class MoviesDetailsController extends BaseController{
+class MoviesDetailsController {
     async getListDetails (req,res){
         let id = qs.parse(url.parse(req.url).query).id;
         let detailMovie = await movieDetailsModel.getDetail(id);
