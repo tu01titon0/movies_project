@@ -20,10 +20,13 @@ class RegisterController {
                 let infoUser = qs.parse(data)
                 let {name, password, email} = infoUser
                 let uniqueName = await userModel.findUserByName(name)
-                console.log(uniqueName)
                 if (uniqueName.length === 0) {
                     await userModel.createUser(name,email,password)
+                    let html = await baseController.getTemplate('./src/views/login.html')
+                    html = html.replace('id="result">', "id=\"result\">" + "Register success Login to join with us!")
                     res.writeHead(301, {location: '/login'});
+                    res.writeHead(200, {'Content-type': 'text/html'});
+                    res.write(html)
                 } else {
                     let html = await baseController.getTemplate('./src/views/signup.html')
                     html = html.replace('id="result">', "id=\"result\">" + "UserName has been Existed!")
