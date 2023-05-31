@@ -8,6 +8,7 @@ let handlers = {}
 const readFileAsync = promisify(fs.readFile);
 const registerController=require('./src/controllers/register.controller')
 const loginController=require('./src/controllers/login.controller')
+const MovieDetails = require('./src/controllers/movies-details.controller')
 
 let mimeTypes={
     'jpg' : 'images/jpg',
@@ -48,6 +49,19 @@ handlers.notfound = async (req, res)=>{
 
 };
 
+handlers.details = async (req, res)=>{
+    try {
+        let data = await MovieDetails.getListDetails(req,res)
+        res.writeHead(200, 'Success', {'Content-type': 'text/html'});
+        res.write(data);
+        res.end();
+    } catch (err) {
+        console.log(err);
+        res.writeHead(500, 'Internal Server Error');
+        res.end();
+    }
+}
+
 handlers.home = async (req, res) =>{
     if(req.method === 'GET'){
         const data = await readFileAsync('./src/views/home.html', 'utf-8');
@@ -60,7 +74,8 @@ handlers.home = async (req, res) =>{
 router = {
     '/home': handlers.home,
     '/register':registerController.getRegisterPage,
-    '/login':loginController.getLoginPage
+    '/login':loginController.getLoginPage,
+    '/movies-details': handlers.details,
 }
 
 server.listen(PORT, 'localhost', () => {
