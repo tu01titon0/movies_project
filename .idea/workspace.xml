@@ -5,8 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4906bb36-97bf-4436-8b6a-33af58cbd842" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/register.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/register.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/50sacthai.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/50sacthai1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/Captainamerica.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/baongam.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/baongam2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/caption2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/hauduemattroi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/hauduemattroi2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/huongmat.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/huongmat2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/videos/Phim chiếu rạp _NĂM MƯƠI SẮC THÁI TỰ DO_ Trailer.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/movies-details.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/movie-details.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/movies-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nodemon" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nodemon" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nodetouch" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nodetouch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nopt" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nopt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/semver" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/simple-update-notifier/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/simple-update-notifier/node_modules/.bin/semver" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
