@@ -1,4 +1,4 @@
-const BaseController = require('./base.controller');
+
 const movieDetailsModel = require('./../models/movie-details.model');
 const qs=require('qs');
 const url = require('url');
@@ -42,6 +42,6 @@ class MoviesDetailsController {
         data = data.replace('{reviews}',html)
         return data;
     }
-
 }
+
 module.exports= new MoviesDetailsController()
