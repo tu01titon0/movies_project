@@ -4,7 +4,6 @@ const url = require('url');
 const {promisify} = require("util");
 const fs = require("fs");
 const movieDetailsModel = require("../models/movie-details.model");
-const worker_threads = require("worker_threads");
 const readFileAsync = promisify(fs.readFile);
 class MovieWatchingController {
     getMovie(req, res){

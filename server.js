@@ -10,8 +10,13 @@ const registerController=require('./src/controllers/register.controller')
 const loginController=require('./src/controllers/login.controller')
 const MovieDetails = require('./src/controllers/movies-details.controller')
 const MovieWatching = require('./src/controllers/movie-watching.controller')
+<<<<<<< HEAD
 const BaseController = require("./src/controllers/base.controller");
 
+=======
+const MovieCategories = require('./src/controllers/movie-categories.controller')
+const qs = require("qs");
+>>>>>>> 6ae755e (categories)
 
 
 let mimeTypes={
@@ -99,6 +104,7 @@ handlers.home = async (req, res) =>{
         res.end();
     }
 }
+
 handlers.video = async (req, res)=>{
     await MovieWatching.getMovie(req, res);
 }
@@ -112,6 +118,18 @@ handlers.register = async (req, res) => {
     registerController.getRegisterPage(req, res).catch(err => {
         console.log(err.message)
     })
+}    
+handlers.categories = async (req, res)=>{
+    try {
+        let data = await MovieCategories.getListGenres(req,res)
+        res.writeHead(200, 'Success', {'Content-type': 'text/html'});
+        res.write(data);
+        res.end();
+    } catch (err) {
+        console.log(err);
+        res.writeHead(500, 'Internal Server Error');
+        res.end();
+    }
 }
 
 router = {
@@ -122,6 +140,7 @@ router = {
     '/movies-details': handlers.details,
     '/movies-watching': handlers.watch,
     '/video' : handlers.video,
+    '/categories' : handlers.categories,
 }
 
 server.listen(PORT, 'localhost', () => {
