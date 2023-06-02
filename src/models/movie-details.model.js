@@ -1,7 +1,7 @@
 const BaseModel = require('./base.model');
 class MovieDetailsModel extends  BaseModel {
     async getDetail(id){
-        let sql = `SELECT Users.userName, Movies.dateAired, Movies.name, Movies.description, Ratings.rating, Views.viewCount, Comments.comment, Movies.createdAt, Movies.actors, Image.imgUrl
+        let sql = `SELECT Users.userName, Movies.dateAired, Movies.name, Movies.description, Ratings.rating, Views.viewCount, Comments.comment, Movies.createdAt, Movies.actors, Image.imgUrl, Movies.id
 FROM Movies
 LEFT JOIN Ratings ON Movies.id = Ratings.moviesId
 LEFT JOIN Views ON Movies.id = Views.moviesId
@@ -25,6 +25,11 @@ WHERE Movies.id = ${id};
         JOIN Genre ON Genre.id = Genremovies.genreId
         WHERE Movies.id=${id} `
         return await  this.querySql(sql)
+    }
+
+    async getView(id){
+        let sql = `UPDATE Views SET viewCount = viewCount + 1 WHERE moviesId = ${id}`
+        return await this.querySql(sql)
     }
 }
 module.exports = new MovieDetailsModel();

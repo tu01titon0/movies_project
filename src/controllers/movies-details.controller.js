@@ -1,4 +1,4 @@
-const BaseController = require('./base.controller');
+
 const movieDetailsModel = require('./../models/movie-details.model');
 const qs=require('qs');
 const url = require('url');
@@ -11,6 +11,7 @@ class MoviesDetailsController {
         let id = qs.parse(url.parse(req.url).query).id;
         let detailMovie = await movieDetailsModel.getDetail(id);
         let data = await readFileAsync('./src/views/movies-details.html','utf-8');
+        data = data.replaceAll('{id}',detailMovie[0].id)
         data = data.replace('{actors}', detailMovie[0].actors)
         data = data.replace('{name}', detailMovie[0].name)
         data = data.replace('{dateAired}', detailMovie[0].dateAired.toLocaleDateString())
@@ -42,6 +43,7 @@ class MoviesDetailsController {
         data = data.replace('{reviews}',html)
         return data;
     }
-
 }
+
+
 module.exports= new MoviesDetailsController()

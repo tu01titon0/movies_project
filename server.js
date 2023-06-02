@@ -1,7 +1,6 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-// const qs = require('qs');
 const { promisify } = require('util');
 const PORT = 3333;
 let handlers = {}
@@ -9,6 +8,10 @@ const readFileAsync = promisify(fs.readFile);
 const registerController=require('./src/controllers/register.controller')
 const loginController=require('./src/controllers/login.controller')
 const MovieDetails = require('./src/controllers/movies-details.controller')
+const MovieWatching = require('./src/controllers/movie-watching.controller')
+const movieDetailsModel = require("./src/models/movie-details.model");
+const qs = require("qs");
+
 
 let mimeTypes={
     'jpg' : 'images/jpg',
@@ -19,12 +22,13 @@ let mimeTypes={
     'ttf':'font/ttf',
     'woff':'font/woff',
     'woff2':'font/woff2',
-    'eot':'application/vnd.ms-fontobject'
+    'eot':'application/vnd.ms-fontobject',
+    'mp4': 'video/mp4'
 }
 
 const server = http.createServer(async(req, res)=>{
     let urlPath = url.parse(req.url).pathname;
-    const filesDefences = urlPath.match(/\.js|\.css|\.png|\.svg|\.jpg|\.ttf|\.woff|\.woff2|\.eot/);
+    const filesDefences = urlPath.match(/\.js|\.css|\.png|\.svg|\.jpg|\.ttf|\.woff|\.woff2|\.eot|\.mp4/);
     if (filesDefences) {
         const extension = mimeTypes[filesDefences[0].toString().split('.')[1]];
         res.writeHead(200, {'Content-Type': extension});
@@ -60,6 +64,19 @@ handlers.details = async (req, res)=>{
         res.writeHead(500, 'Internal Server Error');
         res.end();
     }
+};
+
+handlers.watch = async (req, res)=>{
+    try {
+        let data = await MovieWatching.getListWatching(req,res)
+        res.writeHead(200, 'Success', {'Content-type': 'text/html'});
+        res.write(data);
+        res.end();
+    } catch (err) {
+        console.log(err);
+        res.writeHead(500, 'Internal Server Error');
+        res.end();
+    }
 }
 
 handlers.home = async (req, res) =>{
@@ -70,12 +87,17 @@ handlers.home = async (req, res) =>{
         res.end();
     }
 }
+handlers.video = async (req, res)=>{
+    await MovieWatching.getMovie(req, res);
+}
 
 router = {
     '/home': handlers.home,
     '/register':registerController.getRegisterPage,
     '/login':loginController.getLoginPage,
     '/movies-details': handlers.details,
+    '/movies-watching': handlers.watch,
+    '/video' : handlers.video,
 }
 
 server.listen(PORT, 'localhost', () => {
