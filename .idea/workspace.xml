@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4906bb36-97bf-4436-8b6a-33af58cbd842" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/50sacthai.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/50sacthai1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/Captainamerica.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/baongam.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/baongam2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/caption2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/hauduemattroi.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/hauduemattroi2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/huongmat.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/huongmat2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/videos/Phim chiếu rạp _NĂM MƯƠI SẮC THÁI TỰ DO_ Trailer.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/movies-details.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/movie-details.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/movies-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/font-awesome.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nodemon" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nodemon" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nodetouch" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nodetouch" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nopt" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nopt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/semver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/simple-update-notifier/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/simple-update-notifier/node_modules/.bin/semver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login.html" afterDir="false" />
-    </list>
+    <list default="true" id="4906bb36-97bf-4436-8b6a-33af58cbd842" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +35,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.15.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.15.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/CodeGym/demo casestudy&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/CodeGym/Modul3/Products Manager 1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -101,6 +78,13 @@
       <workItem from="1685456621558" duration="1615000" />
       <workItem from="1685494050139" duration="2799000" />
       <workItem from="1685499480148" duration="1256000" />
+      <workItem from="1685601809961" duration="2948000" />
+      <workItem from="1685604794174" duration="7820000" />
+      <workItem from="1685623136797" duration="659000" />
+      <workItem from="1685624610407" duration="2587000" />
+      <workItem from="1685666612242" duration="670000" />
+      <workItem from="1685668684685" duration="3327000" />
+      <workItem from="1685672076574" duration="5944000" />
     </task>
     <servers />
   </component>
