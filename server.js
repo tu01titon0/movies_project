@@ -1,7 +1,6 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const qs = require("qs");
 const { promisify } = require('util');
 const PORT = 3333;
 let handlers = {}
@@ -10,13 +9,10 @@ const registerController=require('./src/controllers/register.controller')
 const loginController=require('./src/controllers/login.controller')
 const MovieDetails = require('./src/controllers/movies-details.controller')
 const MovieWatching = require('./src/controllers/movie-watching.controller')
-<<<<<<< HEAD
 const BaseController = require("./src/controllers/base.controller");
 
-=======
 const MovieCategories = require('./src/controllers/movie-categories.controller')
 const qs = require("qs");
->>>>>>> 6ae755e (categories)
 
 
 let mimeTypes={
