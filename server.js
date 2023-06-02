@@ -32,8 +32,17 @@ const server = http.createServer(async(req, res)=>{
     if (filesDefences) {
         const extension = mimeTypes[filesDefences[0].toString().split('.')[1]];
         res.writeHead(200, {'Content-Type': extension});
-        fs.createReadStream(__dirname  + req.url).pipe(res)
-    } else{
+        fs.createReadStream(__dirname + req.url).pipe(res)
+    } else {
+        let cookieReq = req.headers?.cookie
+        if (cookieReq) {
+            let cookieValue = cookieReq.split(":")[1];
+            if (cookieValue.length > 0) {
+                let id = parseInt(cookieValue.split(",")[0])
+                let dataSession = await BaseController.getTemplate('./session/user-' + id)
+                req.user = JSON.parse(dataSession.toString())
+            }
+        }
         let chosenHandler = (typeof (router[urlPath]) !== 'undefined') ? router[urlPath] : handlers.notfound;
         chosenHandler(req, res);
     }
@@ -77,6 +86,19 @@ handlers.watch = async (req, res)=>{
         res.writeHead(500, 'Internal Server Error');
         res.end();
     }
+};
+
+handlers.watch = async (req, res)=>{
+    try {
+        let data = await MovieWatching.getListWatching(req,res)
+        res.writeHead(200, 'Success', {'Content-type': 'text/html'});
+        res.write(data);
+        res.end();
+    } catch (err) {
+        console.log(err);
+        res.writeHead(500, 'Internal Server Error');
+        res.end();
+    }
 }
 
 handlers.home = async (req, res) =>{
@@ -91,10 +113,21 @@ handlers.video = async (req, res)=>{
     await MovieWatching.getMovie(req, res);
 }
 
+handlers.login = async (req, res) => {
+    loginController.login(req, res).catch(err => {
+        console.log(err.message)
+    })
+}
+handlers.register = async (req, res) => {
+    registerController.getRegisterPage(req, res).catch(err => {
+        console.log(err.message)
+    })
+}
+
 router = {
     '/home': handlers.home,
-    '/register':registerController.getRegisterPage,
-    '/login':loginController.getLoginPage,
+    '/register': handlers.register,
+    '/login': handlers.login,
     '/movies-details': handlers.details,
     '/movies-watching': handlers.watch,
     '/video' : handlers.video,

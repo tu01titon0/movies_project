@@ -1,5 +1,5 @@
 const qs = require('qs')
-const baseController = require('./base.controller')
+const BaseController = require('./base.controller')
 const baseModel = require('../../src/models/base.model')
 const userModel = require('../../src/models/user.model')
 
@@ -7,7 +7,7 @@ class RegisterController {
 
     async getRegisterPage(req, res) {
         if (req.method === 'GET') {
-            let html = await baseController.getTemplate('./src/views/signup.html')
+            let html = await BaseController.getTemplate('./src/views/signup.html')
             res.writeHead(200, {'Content-type': 'text/html'});
             res.write(html);
             res.end();
@@ -19,17 +19,17 @@ class RegisterController {
             req.on('end', async () => {
                 let infoUser = qs.parse(data)
                 let {name, password, email} = infoUser
-                let uniqueName = await userModel.findUserByName(name)
+                let uniqueName = await userModel.findUserByEmail(email)
                 if (uniqueName.length === 0) {
                     await userModel.createUser(name,email,password)
-                    let html = await baseController.getTemplate('./src/views/login.html')
+                    let html = await BaseController.getTemplate('./src/views/login.html')
                     html = html.replace('id="result">', "id=\"result\">" + "Register success Login to join with us!")
                     res.writeHead(301, {location: '/login'});
                     res.writeHead(200, {'Content-type': 'text/html'});
                     res.write(html)
                 } else {
-                    let html = await baseController.getTemplate('./src/views/signup.html')
-                    html = html.replace('id="result">', "id=\"result\">" + "UserName has been Existed!")
+                    let html = await BaseController.getTemplate('./src/views/signup.html')
+                    html = html.replace('id="result">', "id=\"result\">" + "Email has been Existed!")
                     res.writeHead(200, {'Content-type': 'text/html'});
                     res.write(html);
                 }
@@ -42,5 +42,4 @@ class RegisterController {
         }
     }
 }
-
 module.exports = new RegisterController()
