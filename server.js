@@ -1,6 +1,7 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
+const qs = require("qs");
 const { promisify } = require('util');
 const PORT = 3333;
 let handlers = {}
@@ -10,9 +11,9 @@ const loginController=require('./src/controllers/login.controller')
 const MovieDetails = require('./src/controllers/movies-details.controller')
 const MovieWatching = require('./src/controllers/movie-watching.controller')
 const BaseController = require("./src/controllers/base.controller");
-
+const logoutController =require('./src/controllers/logout.controller')
 const MovieCategories = require('./src/controllers/movie-categories.controller')
-const qs = require("qs");
+
 
 
 let mimeTypes={
@@ -114,7 +115,7 @@ handlers.register = async (req, res) => {
     registerController.getRegisterPage(req, res).catch(err => {
         console.log(err.message)
     })
-}    
+}
 handlers.categories = async (req, res)=>{
     try {
         let data = await MovieCategories.getListGenres(req,res)
@@ -127,6 +128,11 @@ handlers.categories = async (req, res)=>{
         res.end();
     }
 }
+handlers.logout =async (req, res)=>{
+  await logoutController.logout(req,res).catch(err=>{
+       console.log(err.message)
+   })
+}
 
 router = {
     '/': handlers.home,
@@ -136,6 +142,7 @@ router = {
     '/movies-details': handlers.details,
     '/movies-watching': handlers.watch,
     '/video' : handlers.video,
+    '/logout':handlers.logout,
     '/categories' : handlers.categories,
 }
 

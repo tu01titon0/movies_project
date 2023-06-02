@@ -21,5 +21,15 @@ class BaseController {
             } )
         })
     }
+    deleteFileData (filePath) {
+        return new Promise((resolve, reject) => {
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    reject(err.message)
+                }
+                resolve()
+            })
+        })
+    }
 }
 module.exports = new BaseController;
