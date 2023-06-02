@@ -11,6 +11,7 @@ const loginController=require('./src/controllers/login.controller')
 const MovieDetails = require('./src/controllers/movies-details.controller')
 const MovieWatching = require('./src/controllers/movie-watching.controller')
 const BaseController = require("./src/controllers/base.controller");
+const logoutController =require('./src/controllers/logout.controller')
 
 
 
@@ -38,7 +39,7 @@ const server = http.createServer(async(req, res)=>{
         let cookieReq = req.headers?.cookie
         if (cookieReq) {
             let cookieValue = cookieReq.split(":")[1];
-            if (cookieValue.length > 0) {
+            if (cookieValue&&cookieValue.length > 0) {
                 let id = parseInt(cookieValue.split(",")[0])
                 if (fs.existsSync('./session/user-' + id)) {
                     let dataSession = await BaseController.getTemplate('./session/user-' + id)
@@ -104,14 +105,19 @@ handlers.video = async (req, res)=>{
 }
 
 handlers.login = async (req, res) => {
-    loginController.login(req, res).catch(err => {
+   await loginController.login(req, res).catch(err => {
         console.log(err.message)
     })
 }
 handlers.register = async (req, res) => {
-    registerController.getRegisterPage(req, res).catch(err => {
+   await registerController.getRegisterPage(req, res).catch(err => {
         console.log(err.message)
     })
+}
+handlers.logout =async (req, res)=>{
+  await logoutController.logout(req,res).catch(err=>{
+       console.log(err.message)
+   })
 }
 
 router = {
@@ -122,6 +128,7 @@ router = {
     '/movies-details': handlers.details,
     '/movies-watching': handlers.watch,
     '/video' : handlers.video,
+    '/logout':handlers.logout,
 }
 
 server.listen(PORT, 'localhost', () => {

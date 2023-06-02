@@ -4,12 +4,12 @@ const userModel = require('../../src/models/user.model');
 const fs = require('fs');
 const { ROLE_ADMIN, ROLE_USER } = require("./RolerConst");
 const BaseController = require("./base.controller");
+const logoutController =require('./logout.controller')
 
 class LoginController {
     async login(req, res) {
         if (req.method === 'GET') {
             if (req.user) {
-                console.log(req.user);
                 let currentUserId = req.user.id;
                 let rollUser = await userModel.findRoleUser(currentUserId);
                 let role = JSON.parse(Buffer.from(JSON.stringify(rollUser[0]))).role.data[0];
