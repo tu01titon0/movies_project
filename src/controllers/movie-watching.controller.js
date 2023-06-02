@@ -1,25 +1,58 @@
 const movieWatchingModel = require ('./../models/movie-watching.model');
-const getComment = require ('./../controllers/getcomment.comtroller')
 const qs = require('qs');
 const url = require('url');
 const {promisify} = require("util");
 const fs = require("fs");
 const movieDetailsModel = require("../models/movie-details.model");
+const worker_threads = require("worker_threads");
 const readFileAsync = promisify(fs.readFile);
-
 class MovieWatchingController {
+    getMovie(req, res){
+        const range = req.headers.range;
+        if (!range) {
+            res.status(400).send("Requires Range header");
+        }
+
+        // get video stats (about 61MB)
+        const videoPath = "public/videos/" + qs.parse(url.parse(req.url).query).url;
+        const videoSize = fs.statSync(videoPath).size;
+
+        // Parse Range
+        // Example: "bytes=32324-"
+        const CHUNK_SIZE = 10 ** 6; // 1MB
+        const start = Number(range.replace(/\D/g, ""));
+        const end = Math.min(start + CHUNK_SIZE, videoSize - 1);
+
+        // Create headers
+        const contentLength = end - start + 1;
+        const headers = {
+            "Content-Range": `bytes ${start}-${end}/${videoSize}`,
+            "Accept-Ranges": "bytes",
+            "Content-Length": contentLength,
+            "Content-Type": "video/mp4",
+        };
+
+        // HTTP Status 206 for Partial Content
+        res.writeHead(206, headers);
+
+        // create video read stream for this particular chunk
+        const videoStream = fs.createReadStream(videoPath, { start, end });
+
+        // Stream the video chunk to the client
+        videoStream.pipe(res);
+    }
     async getListWatching(req,res){
         let id = qs.parse(url.parse(req.url).query).id;
-        let episodeId =  qs.parse(url.parse(req.url).query).episode_id;
-        let urls = await movieWatchingModel.getEpisode(episodeId,id)
+        let episodeNumberName =  qs.parse(url.parse(req.url).query).episode;
+        let urls = await movieWatchingModel.getEpisode(id,episodeNumberName)
         let movieWatching = await movieWatchingModel.getListWatching(id);
         let data = await readFileAsync('./src/views/movie-watching.html','utf-8');
         let eps=''
         movieWatching.forEach(ep=>{
-            eps+= `<a href="/movies-watching?id=${id}&episode_id=${ep.episode_id}">${ep.episodeName}</a>`
+            eps+= `<a href="/movies-watching?id=${id}&episode=${ep.episodeNumberName}">${ep.episodeNumberName}</a>`
         })
         if (urls.length > 0){
-            data = data.replace('{videos-url}',urls[0].moviesUrl)
+            data = data.replaceAll('{videos-url}',urls[0].moviesUrl)
         }
         data = data.replace('{ep}', eps)
         let html = ''
@@ -35,7 +68,8 @@ class MovieWatchingController {
                 </div>
             </div>`
         })
-        data = data.replace('{reviews}',html)
+        data = data.replace('{reviews}',html);
+        data = data.replace('{name}',movieWatching[0].name)
         return data;
     }
 

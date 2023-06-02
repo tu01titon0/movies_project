@@ -1,7 +1,6 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-// const qs = require('qs');
 const { promisify } = require('util');
 const PORT = 3333;
 let handlers = {}
@@ -10,6 +9,9 @@ const registerController=require('./src/controllers/register.controller')
 const loginController=require('./src/controllers/login.controller')
 const MovieDetails = require('./src/controllers/movies-details.controller')
 const MovieWatching = require('./src/controllers/movie-watching.controller')
+const movieDetailsModel = require("./src/models/movie-details.model");
+const qs = require("qs");
+
 
 let mimeTypes={
     'jpg' : 'images/jpg',
@@ -85,6 +87,9 @@ handlers.home = async (req, res) =>{
         res.end();
     }
 }
+handlers.video = async (req, res)=>{
+    await MovieWatching.getMovie(req, res);
+}
 
 router = {
     '/home': handlers.home,
@@ -92,6 +97,7 @@ router = {
     '/login':loginController.getLoginPage,
     '/movies-details': handlers.details,
     '/movies-watching': handlers.watch,
+    '/video' : handlers.video,
 }
 
 server.listen(PORT, 'localhost', () => {
