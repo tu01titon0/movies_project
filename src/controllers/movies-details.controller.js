@@ -22,14 +22,13 @@ class MoviesDetailsController {
         data = data.replace('{description}', detailMovie[0].description)
         let generNames = await movieDetailsModel.getGenresName(id)
         let genreName =''
-
-        generNames.forEach((genre,i)=>{
+        generNames.forEach((genre)=>{
             genreName += (genre.name + ' . ')
         })
         data = data.replace('{genre}',genreName)
         let html = ''
         let comments = await movieDetailsModel.getComment(id)
-        comments.forEach((user, comment)=>{
+        comments.forEach((user)=>{
             html += `<div class="anime__review__item">
                 <div class="anime__review__item__pic">
                     <img src="../../assets/img/anime/review-1.jpg" alt="">

@@ -12,6 +12,7 @@ const MovieDetails = require('./src/controllers/movies-details.controller')
 const MovieWatching = require('./src/controllers/movie-watching.controller')
 const BaseController = require("./src/controllers/base.controller");
 const logoutController =require('./src/controllers/logout.controller')
+const MovieCategories = require('./src/controllers/movie-categories.controller')
 
 
 
@@ -39,7 +40,7 @@ const server = http.createServer(async(req, res)=>{
         let cookieReq = req.headers?.cookie
         if (cookieReq) {
             let cookieValue = cookieReq.split(":")[1];
-            if (cookieValue&&cookieValue.length > 0) {
+            if (cookieValue.length > 0) {
                 let id = parseInt(cookieValue.split(",")[0])
                 if (fs.existsSync('./session/user-' + id)) {
                     let dataSession = await BaseController.getTemplate('./session/user-' + id)
@@ -100,19 +101,32 @@ handlers.home = async (req, res) =>{
         res.end();
     }
 }
+
 handlers.video = async (req, res)=>{
     await MovieWatching.getMovie(req, res);
 }
 
 handlers.login = async (req, res) => {
-   await loginController.login(req, res).catch(err => {
+    loginController.login(req, res).catch(err => {
         console.log(err.message)
     })
 }
 handlers.register = async (req, res) => {
-   await registerController.getRegisterPage(req, res).catch(err => {
+    registerController.getRegisterPage(req, res).catch(err => {
         console.log(err.message)
     })
+}
+handlers.categories = async (req, res)=>{
+    try {
+        let data = await MovieCategories.getListGenres(req,res)
+        res.writeHead(200, 'Success', {'Content-type': 'text/html'});
+        res.write(data);
+        res.end();
+    } catch (err) {
+        console.log(err);
+        res.writeHead(500, 'Internal Server Error');
+        res.end();
+    }
 }
 handlers.logout =async (req, res)=>{
   await logoutController.logout(req,res).catch(err=>{
@@ -129,6 +143,7 @@ router = {
     '/movies-watching': handlers.watch,
     '/video' : handlers.video,
     '/logout':handlers.logout,
+    '/categories' : handlers.categories,
 }
 
 server.listen(PORT, 'localhost', () => {
