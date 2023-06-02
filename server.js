@@ -40,8 +40,10 @@ const server = http.createServer(async(req, res)=>{
             let cookieValue = cookieReq.split(":")[1];
             if (cookieValue.length > 0) {
                 let id = parseInt(cookieValue.split(",")[0])
-                let dataSession = await BaseController.getTemplate('./session/user-' + id)
-                req.user = JSON.parse(dataSession.toString())
+                if (fs.existsSync('./session/user-' + id)) {
+                    let dataSession = await BaseController.getTemplate('./session/user-' + id)
+                    req.user = JSON.parse(dataSession.toString())
+                } 
             }
         }
         let chosenHandler = (typeof (router[urlPath]) !== 'undefined') ? router[urlPath] : handlers.notfound;
@@ -89,19 +91,6 @@ handlers.watch = async (req, res)=>{
     }
 };
 
-handlers.watch = async (req, res)=>{
-    try {
-        let data = await MovieWatching.getListWatching(req,res)
-        res.writeHead(200, 'Success', {'Content-type': 'text/html'});
-        res.write(data);
-        res.end();
-    } catch (err) {
-        console.log(err);
-        res.writeHead(500, 'Internal Server Error');
-        res.end();
-    }
-}
-
 handlers.home = async (req, res) =>{
     if(req.method === 'GET'){
         const data = await readFileAsync('./src/views/home.html', 'utf-8');
@@ -126,6 +115,7 @@ handlers.register = async (req, res) => {
 }
 
 router = {
+    '/': handlers.home,
     '/home': handlers.home,
     '/register': handlers.register,
     '/login': handlers.login,
