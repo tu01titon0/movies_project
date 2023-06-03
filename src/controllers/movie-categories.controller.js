@@ -10,20 +10,20 @@ class CategoriesController {
         let nameOfGenres = qs.parse(url.parse(req.url).query).name;
         let listGenre = await categories.getListGenre(nameOfGenres);
         let data = await readFileAsync('./src/views/movie-categories.html','utf-8');
-        let categorie=''
-        listGenre.forEach(cete=>{
-            categorie += ` <div class="product__item__pic set-bg" data-setbg="../../public/images/${cete.imgUrl}">                                 
+        let listCategories=''
+        listGenre.forEach(cate=>{
+            listCategories += ` <div class="product__item__pic set-bg" data-setbg="../../public/images/${cate.imgUrl}">                                 
                                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i>${cete.viewCount}</div>
+                                        <div class="view"><i class="fa fa-eye"></i>${cate.viewCount}</div>
                                     </div>
                                     <div class="product__item__text">
                                         <ul>                                     
-                                            <li>${cete.name}</li> 
+                                            <li>${cate.name}</li> 
                                         </ul>
-                                        <h5><a href="/movies-watching?id=${cete.movieId}&episode=1">${cete.movieName}</a></h5>
+                                        <h5><a href="/movies-watching?id=${cate.movieId}&episode=1">${cate.movieName}</a></h5>
                                     </div>`
         })
-        data = data.replace('{categories}',categorie)
+        data = data.replace('{categories}',listCategories)
         data = data.replaceAll('{Genre}',listGenre[0].name)
         return  data
     }

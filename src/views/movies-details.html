@@ -48,12 +48,11 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="#">Homepage</a></li>
-                                <li><a href="#">Categories <span class="arrow_carrot-down"></span></a>
+                                <li><a href="/categories?name=Action">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="#">Categories</a></li>
-                                        <li><a href="#">Anime Details</a></li>
-                                        <li><a href="#">Anime Watching</a></li>
-                                        <li><a href="#">Blog Details</a></li>
+                                        <li><a href="/categories?name=Action">Categories</a></li>
+                                        <li><a href="/movies-details?id=1">Movie Details</a></li>
+                                        <li><a href="/movies-watching?id=1&episode=1">Movie Watching</a></li>
                                         <li><a href="/register">Sign Up</a></li>
                                         <li><a href="/login">Login</a></li>
                                         <li><a href="/logout">Logout</a></li>
@@ -234,8 +233,8 @@
           <div class="search-model">
             <div class="h-100 d-flex align-items-center justify-content-center">
                 <div class="search-close-switch"><i class="icon_close"></i></div>
-                <form class="search-model-form">
-                    <input type="text" id="search-input" placeholder="Search here.....">
+                <form class="search-model-form" action="#" method="post">
+                    <input name="name" type="text" id="search-input" placeholder="Search here....."  >
                 </form>
             </div>
         </div>

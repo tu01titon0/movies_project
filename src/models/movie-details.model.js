@@ -31,5 +31,12 @@ WHERE Movies.id = ${id};
         let sql = `UPDATE Views SET viewCount = viewCount + 1 WHERE moviesId = ${id}`
         return await this.querySql(sql)
     }
+
+    async findByName(name){
+        let sql = `SELECT *
+        FROM Movies
+        WHERE name LIKE '%${name}%';`
+        return await this.querySql(sql)
+    }
 }
 module.exports = new MovieDetailsModel();

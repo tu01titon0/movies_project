@@ -42,6 +42,7 @@ class MoviesDetailsController {
         data = data.replace('{reviews}',html)
         return data;
     }
+
 }
 
 
