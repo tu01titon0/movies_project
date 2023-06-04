@@ -69,7 +69,7 @@ class HomeController {
                                         <ul>
                                             <li>${element.genreNames}</li>
                                         </ul>
-                                        <h5><a href="/movies-details?id=${element.movieId}">${element.genreNames}</a></h5>
+                                        <h5><a href="/movies-details?id=${element.movieId}">${element.movieName}</a></h5>
                                     </div>
                                 </div>
                             </div>`
@@ -86,7 +86,7 @@ class HomeController {
                                         <ul>
                                             <li>${element.genreNames}</li>
                                         </ul>
-                                        <h5><a href="/movies-details?id=${element.movieId}">${element.genreNames}</a></h5>
+                                        <h5><a href="/movies-details?id=${element.movieId}">${element.movieName}</a></h5>
                                     </div>
                                 </div>
                             </div>`

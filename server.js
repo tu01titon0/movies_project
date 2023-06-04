@@ -130,8 +130,8 @@ handlers.categories = async (req, res)=>{
         res.end();
     }
 }
-handlers.logout =async (req, res)=>{
-  await logoutController.logout(req,res).catch(err=>{
+handlers.logout = async (req, res)=>{
+    await logoutController.logout(req,res).catch(err=>{
        console.log(err.message)
    })
 }
@@ -150,8 +150,8 @@ handlers.search = async (req, res)=>{
     }
 }
 
-const handleSearchByName = (req, res) => {
-    MovieSearch.onSearchByName(req, res).catch(err => {
+const handleSearchByName = async (req, res) => {
+    await MovieSearch.onSearchByName(req, res).catch(err => {
         console.log(err.message)
     })
 }
