@@ -13,6 +13,7 @@ const MovieWatching = require('./src/controllers/movie-watching.controller')
 const BaseController = require("./src/controllers/base.controller");
 const logoutController =require('./src/controllers/logout.controller')
 const MovieCategories = require('./src/controllers/movie-categories.controller')
+const homeController = require('./src/controllers/home.controller')
 
 
 
@@ -40,7 +41,7 @@ const server = http.createServer(async(req, res)=>{
         let cookieReq = req.headers?.cookie
         if (cookieReq) {
             let cookieValue = cookieReq.split(":")[1];
-            if (cookieValue.length > 0) {
+            if (cookieValue && cookieValue.length > 0) {
                 let id = parseInt(cookieValue.split(",")[0])
                 if (fs.existsSync('./session/user-' + id)) {
                     let dataSession = await BaseController.getTemplate('./session/user-' + id)
@@ -94,12 +95,9 @@ handlers.watch = async (req, res)=>{
 };
 
 handlers.home = async (req, res) =>{
-    if(req.method === 'GET'){
-        const data = await readFileAsync('./src/views/home.html', 'utf-8');
-        res.writeHead(200, 'Success', {'Content-type': 'text/html'});
-        res.write(data);
-        res.end();
-    }
+    homeController.getHomePage(req,res).catch(err=>{
+        console.log(err.message)
+    })
 }
 
 handlers.video = async (req, res)=>{
