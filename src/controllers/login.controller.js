@@ -20,12 +20,21 @@ class LoginController {
                     res.writeHead(301, { Location: '/list_movies' });
                     return res.end();
                 }
+            }else{
+                let html = await BaseController.getTemplate('./src/views/login.html');
+                res.writeHead(200, { 'Content-type': 'text/html' });
+                res.write(html);
+                return res.end();
             }
+<<<<<<< HEAD
         
             let html = await BaseController.getTemplate('./src/views/login.html');
             res.writeHead(200, { 'Content-type': 'text/html' });
             res.write(html);
             return res.end();
+=======
+
+>>>>>>> bb9f7f4 (home,fixlogin)
         } else {
             const buffer = [];
             for await (const chunk of req) {

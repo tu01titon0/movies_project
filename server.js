@@ -3,7 +3,11 @@ const url = require('url');
 const fs = require('fs');
 const qs = require("qs");
 const { promisify } = require('util');
+<<<<<<< HEAD
 const PORT = 5555;
+=======
+const PORT = 3333;
+>>>>>>> bb9f7f4 (home,fixlogin)
 let handlers = {}
 const readFileAsync = promisify(fs.readFile);
 const registerController=require('./src/controllers/register.controller')
@@ -48,7 +52,7 @@ const server = http.createServer(async(req, res)=>{
                 if (fs.existsSync('./session/user-' + id)) {
                     let dataSession = await BaseController.getTemplate('./session/user-' + id)
                     req.user = JSON.parse(dataSession.toString())
-                } 
+                }
             }
         }
         let chosenHandler = (typeof (router[urlPath]) !== 'undefined') ? router[urlPath] : handlers.notfound;
@@ -99,8 +103,12 @@ handlers.watch = async (req, res)=>{
 };
 
 handlers.home = async (req, res) =>{
+<<<<<<< HEAD
     handleSearchByName(req, res)
     homeController.getHomePage(req,res).catch(err=>{
+=======
+   await homeController.getHomePage(req,res).catch(err=>{
+>>>>>>> bb9f7f4 (home,fixlogin)
         console.log(err.message)
     })
 }
@@ -110,14 +118,12 @@ handlers.video = async (req, res)=>{
 }
 
 handlers.login = async (req, res) => {
-    handleSearchByName(req, res)
-    loginController.login(req, res).catch(err => {
+   await loginController.login(req, res).catch(err => {
         console.log(err.message)
     })
 }
 handlers.register = async (req, res) => {
-    handleSearchByName(req,  res)
-    registerController.getRegisterPage(req, res).catch(err => {
+   await registerController.getRegisterPage(req, res).catch(err => {
         console.log(err.message)
     })
 }
