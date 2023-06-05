@@ -20,7 +20,7 @@ class CategoriesController {
                                         <ul>                                     
                                             <li>${cate.name}</li> 
                                         </ul>
-                                        <h5><a href="/movies-watching?id=${cate.movieId}&episode=1">${cate.movieName}</a></h5>
+                                        <h5><a href="/movies-details?id=${cate.movieId}&episode=1">${cate.movieName}</a></h5>
                                     </div>`
         })
         if(req.user){
