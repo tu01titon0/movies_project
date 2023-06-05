@@ -3,7 +3,8 @@ const url = require('url');
 const fs = require('fs');
 const qs = require("qs");
 const { promisify } = require('util');
-const PORT = 3456;
+const PORT = 4444;
+
 let handlers = {}
 const readFileAsync = promisify(fs.readFile);
 const registerController=require('./src/controllers/register.controller')

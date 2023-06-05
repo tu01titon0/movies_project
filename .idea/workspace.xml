@@ -7,9 +7,17 @@
     <list default="true" id="ac3f3439-1f41-44d2-a2d8-f2fe57c786aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session/user-1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/session/user-2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/home.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/home.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/logout.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/logout.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/addEp.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/addEp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/list_episodes.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/list_episodes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/list_movies.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/list_movies.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/movie-categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/movie-categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/movie-search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/movie-search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/movies-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/movies-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685943018655</updated>
-      <workItem from="1685943020221" duration="3470000" />
+      <workItem from="1685943020221" duration="8392000" />
     </task>
     <servers />
   </component>
