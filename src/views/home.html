@@ -7,7 +7,7 @@
     <meta name="keywords" content="Anime, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anime | Template</title>
+    <title>PhimBuzz</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -37,8 +37,8 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header__logo">
-                        <a href="./home.html">
-                            <img src="" alt="">
+                        <a href="./home">
+                                <img src="../../public/images/logo.jpg">
                         </a>
                     </div>
                 </div>
@@ -47,18 +47,17 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li class="active"><a href="/home">Homepage</a></li>
-                                <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
+                                <li><a href="">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="./categories.html">Categories</a></li>
-                                        <li><a href="./anime-details.html">Anime Details</a></li>
-                                        <li><a href="./anime-watching.html">Anime Watching</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                        <li><a href="/register">Sign Up</a></li>
-                                        <li><a href="/login">Login</a></li>
-                                        <li><a href="/logout">Login</a></li>
+                                        <li><a href="/categories?name=Action">Action</a></li>
+                                        <li><a href="/categories?name=Sex">Sex</a></li>
+                                        <li><a href="/categories?name=Romance">Romance</a></li>
+                                        <li><a href="/categories?name=Drama">Drama</a></li>
+                                        <li><a href="/categories?name=Fantasy">Fantasy</a></li>
+                                        <li><a href="/categories?name=Dectective">Dectective</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="./blog.html">Our Blog</a></li>
+                                <li><a href="../../template/anime-main/blog.html">Our Blog</a></li>
                                 <li><a href="#">Contacts</a></li>
                             </ul>
                         </nav>
@@ -306,8 +305,8 @@
   <div class="search-model">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-switch"><i class="icon_close"></i></div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
+        <     <form class="search-model-form" action="#" method="post">
+        <input name="name" type="text" id="search-input" placeholder="Search here....."  >
         </form>
     </div>
 </div>
