@@ -92,6 +92,9 @@ class HomeController {
                             </div>`
         })
         res.writeHead(200, {'Content-type': 'text/html'});
+        if(req.user){
+            html=html.replace(`userName">`,'userName">' + req.user.email)
+        }
         html=html.replace(`{background}`,backGround)
         html=html.replace(`{trending}`,trending)
         html=html.replace(`{popular}`,popular)

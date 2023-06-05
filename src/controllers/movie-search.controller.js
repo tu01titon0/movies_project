@@ -23,6 +23,9 @@ class MovieSearchController {
                                         <h5><a href="/movies-watching?id=${name.movieId}&episode=1">${name.movieName}</a></h5>
                                     </div>`
         })
+        if(req.user){
+            data=data.replace(`userName">`,'userName">' + req.user.email)
+        }
         data = data.replace('nameOfMovie',listMovies);
         data = data.replaceAll('{name}', name);
         return data;

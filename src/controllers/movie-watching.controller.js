@@ -67,6 +67,9 @@ class MovieWatchingController {
                 </div>
             </div>`
         })
+        if(req.user){
+            data=data.replace(`userName">`,'userName">' + req.user.email)
+        }
         data = data.replace('{reviews}',html);
         data = data.replace('{name}',movieWatching[0].name)
         return data;
