@@ -3,7 +3,7 @@ const url = require('url');
 const fs = require('fs');
 const qs = require("qs");
 const { promisify } = require('util');
-const PORT = 5555;
+const PORT = 3456;
 let handlers = {}
 const readFileAsync = promisify(fs.readFile);
 const registerController=require('./src/controllers/register.controller')
@@ -16,7 +16,7 @@ const adminController = require('./src/controllers/admin.controller');
 const MovieCategories = require('./src/controllers/movie-categories.controller')
 const MovieSearch = require('./src/controllers/movie-search.controller')
 const homeController = require('./src/controllers/home.controller')
-
+const commentController = require('./src/controllers/comment.controller')
 
 
 let mimeTypes={
@@ -181,6 +181,12 @@ handlers.addEp = async (req, res)=>{
     })
 }
 
+handlers.comment = async (req, res)=>{
+    await commentController.commentMovie(req, res).catch(err => {
+        console.log(err.message)
+    })
+}
+
 router = {
     '/': handlers.home,
     '/home': handlers.home,
@@ -196,6 +202,7 @@ router = {
     '/list_movies': handlers.list_movies,
     '/list_episodes': handlers.list_episodes,
     '/addEp': handlers.addEp,
+    '/comment': handlers.comment,
 }
 
 server.listen(PORT, 'localhost', () => {
