@@ -39,6 +39,9 @@ class MoviesDetailsController {
                 </div>
             </div>`
         })
+        if(req.user){
+            data=data.replace(`userName">`,'userName">' + req.user.email)
+        }
         data = data.replace('{reviews}',html)
         return data;
     }

@@ -12,6 +12,7 @@ const MovieDetails = require('./src/controllers/movies-details.controller')
 const MovieWatching = require('./src/controllers/movie-watching.controller')
 const BaseController = require("./src/controllers/base.controller");
 const logoutController =require('./src/controllers/logout.controller')
+const adminController = require('./src/controllers/admin.controller');
 const MovieCategories = require('./src/controllers/movie-categories.controller')
 const MovieSearch = require('./src/controllers/movie-search.controller')
 const homeController = require('./src/controllers/home.controller')
@@ -156,6 +157,30 @@ const handleSearchByName = async (req, res) => {
     })
 }
 
+handlers.admin = async (req, res)=>{
+    await adminController.getAdminPage(req, res).catch(err => {
+        console.log(err.message)
+    })
+}
+
+handlers.list_movies = async (req, res)=>{
+    await adminController.getListMovies(req, res).catch(err => {
+        console.log(err.message)
+    })
+}
+
+handlers.list_episodes = async (req, res)=>{
+    await adminController.getListEpisodes(req, res).catch(err => {
+        console.log(err.message)
+    })
+}
+
+handlers.addEp = async (req, res)=>{
+    await adminController.addEpisodes(req, res).catch(err => {
+        console.log(err.message)
+    })
+}
+
 router = {
     '/': handlers.home,
     '/home': handlers.home,
@@ -167,6 +192,10 @@ router = {
     '/logout':handlers.logout,
     '/categories' : handlers.categories,
     '/search' : handlers.search,
+    '/admin': handlers.admin,
+    '/list_movies': handlers.list_movies,
+    '/list_episodes': handlers.list_episodes,
+    '/addEp': handlers.addEp,
 }
 
 server.listen(PORT, 'localhost', () => {

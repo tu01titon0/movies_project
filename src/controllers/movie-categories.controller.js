@@ -23,6 +23,9 @@ class CategoriesController {
                                         <h5><a href="/movies-watching?id=${cate.movieId}&episode=1">${cate.movieName}</a></h5>
                                     </div>`
         })
+        if(req.user){
+            data=data.replace(`userName">`,'userName">' + req.user.email)
+        }
         data = data.replace('{categories}',listCategories)
         data = data.replaceAll('{Genre}',listGenre[0].name)
         return  data

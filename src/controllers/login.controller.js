@@ -17,11 +17,11 @@ class LoginController {
                     res.writeHead(301, { Location: '/home' });
                     return res.end();
                 } else if (role === ROLE_ADMIN) {
-                    res.writeHead(301, { Location: '/admin' });
+                    res.writeHead(301, { Location: '/list_movies' });
                     return res.end();
                 }
             }
-
+        
             let html = await BaseController.getTemplate('./src/views/login.html');
             res.writeHead(200, { 'Content-type': 'text/html' });
             res.write(html);
@@ -49,7 +49,7 @@ class LoginController {
                 };
                 res.setHeader('Set-Cookie', 'cookie-app=' + JSON.stringify(cookieLogin));
                 if (req.user && result[0].role === ROLE_ADMIN) {
-                    res.writeHead(301, { Location: '/admin' });
+                    res.writeHead(301, { Location: '/list_movies' });
                 } else {
                     res.writeHead(301, { Location: '/home' });
                 }
