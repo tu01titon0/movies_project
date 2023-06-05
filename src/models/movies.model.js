@@ -51,10 +51,16 @@ class MoviesModel extends BaseModel{
     }
     
     async newEpisode(movieId, name, numberEpisodes, moviesUrl){
-        
         let sql = `INSERT INTO Episodes (moviesId, name, numberEpisodes, moviesUrl)
         VALUES
             (${parseInt(movieId)}, '${name}', ${parseInt(numberEpisodes)}, '${moviesUrl}')`;
+        return await this.querySql(sql); 
+    }
+    
+    async newComment(userId, moviesId, comment){
+        let sql = `INSERT INTO Comments (userId, moviesId, comment)
+        VALUES (${parseInt(userId)}, ${parseInt(moviesId)}, '${comment}');
+        `;
         return await this.querySql(sql); 
     }
     
