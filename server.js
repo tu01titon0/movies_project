@@ -99,7 +99,6 @@ handlers.watch = async (req, res)=>{
 };
 
 handlers.home = async (req, res) =>{
-    handleSearchByName(req, res)
     homeController.getHomePage(req,res).catch(err=>{
         console.log(err.message)
     })
@@ -110,13 +109,11 @@ handlers.video = async (req, res)=>{
 }
 
 handlers.login = async (req, res) => {
-    handleSearchByName(req, res)
     loginController.login(req, res).catch(err => {
         console.log(err.message)
     })
 }
 handlers.register = async (req, res) => {
-    handleSearchByName(req,  res)
     registerController.getRegisterPage(req, res).catch(err => {
         console.log(err.message)
     })
